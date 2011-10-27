@@ -27,10 +27,10 @@ unsigned int nTransactionsUpdated = 0;
 map<COutPoint, CInPoint> mapNextTx;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2");
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Litecoin: starting difficulty is 1 / 2^12
-const int nTotalBlocksEstimate = 18144; // Conservative estimate of total nr of blocks on main chain
-const int nInitialBlockThreshold = 120; // Regard blocks up until N-threshold as "initial download"
+uint256 hashGenesisBlock("0x0f6b7de8de037856768de150f1c32a0a1b3b3fecb620d2afaebc0221181b20eb");
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20);
+const int nTotalBlocksEstimate = 16941; // Conservative estimate of total nr of blocks on main chain
+const int nInitialBlockThreshold = 10000; // Regard blocks up until N-threshold as "initial download"
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 CBigNum bnBestChainWork = 0;
@@ -534,7 +534,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!IsCoinBase())
         return 0;
-    return max(0, (COINBASE_MATURITY+20) - GetDepthInMainChain());
+    return max(0, (COINBASE_MATURITY+1) - GetDepthInMainChain());
 }
 
 
@@ -638,20 +638,28 @@ uint256 static GetOrphanRoot(const CBlock* pblock)
 }
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
+
 {
-    int64 nSubsidy = 50 * COIN;
-
-    // Subsidy is cut in half every 4 years
-    nSubsidy >>= (nHeight / 840000); // Litecoin: 840k blocks in ~4 years
-
+    //int64 nSubsidy = 25* COIN;Tenebrix: the amazing mythogenic premine happens here
+    int64 nSubsidy = 7769999 * COIN;
+	if(GetBoolArg("-enablepm", true))
+    {
+        if (nHeight>1)
+            nSubsidy = 25 * COIN;
+    }
+    // Subsidy is cut in half every 4 years no more :)
+    //nSubsidy >>= (nHeight / 210000);
+    //nSubsidy >>= (nHeight / (GetMaxMoney()/COIN/100));
+	//
+    printf("nHeight = %u  nSbsidy = %lu nFees = %ld \n",nHeight,nSubsidy,nFees);
+    
     return nSubsidy + nFees;
 }
-
 unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast)
 {
-    const int64 nTargetTimespan = 3.5 * 24 * 60 * 60; // Litecoin: 3.5 days for diff retarget
-    const int64 nTargetSpacing = 2.5 * 60; // Litecoin: 2.5 minutes between blocks
-    const int64 nInterval = nTargetTimespan / nTargetSpacing; // Litecoin: 2016 blocks
+    const int64 nTargetTimespan = 7 * 24 * 60 * 60; // tenebrix: 3.5 days for diff retarget
+    const int64 nTargetSpacing = 5 * 60; // tenebrix: 5 minutes between blocks
+    const int64 nInterval = nTargetTimespan / nTargetSpacing; 
 
     // Genesis block
     if (pindexLast == NULL)
@@ -661,7 +669,7 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast)
     if ((pindexLast->nHeight+1) % nInterval != 0)
         return pindexLast->nBits;
 
-    // Litecoin: This fixes an issue where a 51% attack can change difficulty at will.
+    // tenebrix: This fixes an issue where a 51% attack can change difficulty at will.
     // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
     int blockstogoback = nInterval-1;
     if ((pindexLast->nHeight+1) != nInterval)
@@ -1312,18 +1320,9 @@ bool CBlock::AcceptBlock()
 
     // Check that the block chain matches the known block chain up to a checkpoint
     if (!fTestNet)
-        if ((nHeight ==     1 && hash != uint256("0x80ca095ed10b02e53d769eb6eaf92cd04e9e0759e5be4a8477b42911ba49c78f")) ||
-            (nHeight ==     2 && hash != uint256("0x13957807cdd1d02f993909fa59510e318763f99a506c4c426e3b254af09f40d7")) ||
-            (nHeight ==  1500 && hash != uint256("0x841a2965955dd288cfa707a755d05a54e45f8bd476835ec9af4402a2b59a2967")) ||
-            (nHeight ==  4032 && hash != uint256("0x9ce90e427198fc0ef05e5905ce3503725b80e26afd35a987965fd7e3d9cf0846")) ||
-            (nHeight ==  6048 && hash != uint256("0x3dd6e620060cf9c21aa4702413147329da0d1d6479dcca71076f5ba8d5fe00be")) ||
-            (nHeight ==  8064 && hash != uint256("0xeb984353fc5190f210651f150c40b8a4bab9eeeff0b729fcb3987da694430d70")) ||
-            (nHeight == 10080 && hash != uint256("0x2e1eaf34c79287fc8132f293aa78c5999966311766974d9ca529c4ecfdab3737")) ||
-            (nHeight == 12096 && hash != uint256("0x7fd90d37349af9057e0dea890971a8c2fa34457f63edb7db116aec9fb0670874")) ||
-            (nHeight == 14112 && hash != uint256("0x42d795d3e70b2d515e2d11179f26c2d50ed0a03c5c51f73b7fef3405cb1a93fd")) ||
-            (nHeight == 16128 && hash != uint256("0x602edf1859b7f9a6af809f1d9b0e6cb66fdc1d4d9dcd7a4bec03e12a1ccd153d")) ||
-            (nHeight == 18144 && hash != uint256("0x2c39f423fa76a6c36756633f6fd00714107731f5df1781c1b020e86383fde0e8")))
-            return DoS(100, error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight));
+        if ((nHeight == 100 && hash != uint256("0xaa6fbbc5b8885797a180c35918971e40d0459fd4299cbcaae7d3b5d551fa7d70")) ||
+            (nHeight == 152 && hash != uint256("0x7cf7e64cd5c770cf7315bc767e179a61d68815326c163a16b487639c006c9c70")))
+            return error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight);
 
     printf("Got new block at height %d: %s\n", nHeight, hash.ToString().c_str());
 
@@ -1419,7 +1418,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low  ");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        ThreadSafeMessageBox(strMessage, "Litecoin", wxOK | wxICON_EXCLAMATION);
+        ThreadSafeMessageBox(strMessage, "tenebrix", wxOK | wxICON_EXCLAMATION);
         CreateThread(Shutdown, NULL);
         return false;
     }
@@ -1471,11 +1470,11 @@ bool LoadBlockIndex(bool fAllowNew)
 {
     if (fTestNet)
     {
-        hashGenesisBlock = uint256("0xf5ae71e26c74beacc88382716aced69cddf3dffff24f384e1808905e0188f68f");
-        // bnProofOfWorkLimit = CBigNum(~uint256(0) >> 28); // Litecoin: starting difficulty is the same for testnet
-        // Litecoin: increase each by adding 2 to bitcoin's value.
+        hashGenesisBlock = uint256("0x0f6b7de8de037856768de150f1c32a0a1b3b3fecb620d2afaebc0221181b20eb");
+        // bnProofOfWorkLimit = CBigNum(~uint256(0) >> 28); // tenebrix: starting difficulty is the same for testnet
+        // tenebrix: increase each by adding 2 to bitcoin's value.
         pchMessageStart[0] = 0xfc;
-        pchMessageStart[1] = 0xc1;
+        pchMessageStart[1] = 0xb4;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
     }
@@ -1497,41 +1496,44 @@ bool LoadBlockIndex(bool fAllowNew)
             return false;
 
         // Genesis Block:
-        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=97ddfbbae6, nTime=1317972665, nBits=1e0ffff0, nNonce=2084524493, vtx=1)
-        //   CTransaction(hash=97ddfbbae6, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        // CBlock(hash=12a765e31ffd4059bada, PoW=0000050c34a64b415b6b, ver=1, hashPrevBlock=00000000000000000000, hashMerkleRoot=4e77ffdc1b, nTime=1315469777, nBits=0x1e0ffff0, nNonce=613795, vtx=1)
+        //   CTransaction(hash=4e77ffdc1b, ver=1, vin.size=1, vout.size=1, nLockTime=0)
         //     CTxIn(COutPoint(0000000000, -1), coinbase 04ffff001d0104404e592054696d65732030352f4f63742f32303131205374657665204a6f62732c204170706c65e280997320566973696f6e6172792c2044696573206174203536)
-        //     CTxOut(nValue=50.00000000, scriptPubKey=040184710fa689ad5023690c80f3a4)
-        //   vMerkleTree: 97ddfbbae6
+        //     CTxOut(nValue=50.00000000, scriptPubKey=04678afdb0fe5548271967f1a67130)
+        //   vMerkleTree: 4e77ffdc1b
 
         // Genesis block
-        const char* pszTimestamp = "NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56";
+        const char* pszTimestamp = "\"If a technological feat is possible, man will do it. Almost as if it's wired into the core of our being\"";
         CTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
+		
+
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+        
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1317972665;
+        block.nTime    = 1315469777;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2084524493;
+        block.nNonce   = 613795;
 
         if (fTestNet)
         {
-            block.nTime    = 1317798646;
+            block.nTime    = 1315469777;
             block.nBits    = 0x1e0ffff0;
-            block.nNonce   = 385270584;
+            block.nNonce   = 613795;
         }
 
         //// debug print
         printf("%s\n", block.GetHash().ToString().c_str());
         printf("%s\n", hashGenesisBlock.ToString().c_str());
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        assert(block.hashMerkleRoot == uint256("0x4e77ffdc1baa20ffffab9d901f418f7496b2a710e462ac4047accdb8b3b774f9"));
 
         // If genesis block hash does not match, then generate new genesis hash.
         if (false && block.GetHash() != hashGenesisBlock)
@@ -1791,7 +1793,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ascii, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xfb, 0xc0, 0xb6, 0xdb }; // Litecoin: increase each by adding 2 to bitcoin's value.
+unsigned char pchMessageStart[4] = { 0xf9, 0xda, 0xb4, 0xd9 };
 
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)

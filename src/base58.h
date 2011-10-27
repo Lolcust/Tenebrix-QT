@@ -244,7 +244,7 @@ class CBitcoinAddress : public CBase58Data
 public:
     bool SetHash160(const uint160& hash160)
     {
-        SetData(fTestNet ? 111 : 48, &hash160, 20); // Litecoin addresses start with L
+        SetData(fTestNet ? 53 : 127, &hash160, 20); // Tenebrix addresses start with t
         return true;
     }
 
@@ -259,7 +259,7 @@ public:
         bool fExpectTestNet = false;
         switch(nVersion)
         {
-            case 48: // Litecoin addresses start with L
+            case 127: // Tenebrix addresses start with t
                 break;
 
             case 111:

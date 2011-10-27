@@ -83,7 +83,7 @@ OBJS= \
 RC=../share
 
 
-all: litecoind.exe
+all: tenebrixd.exe
 
 
 .cpp{obj}.obj:
@@ -142,7 +142,7 @@ obj\nogui\rpc.obj: $(HEADERS)
 
 obj\nogui\init.obj: $(HEADERS)
 
-litecoind.exe: $(OBJS:obj\=obj\nogui\) obj\ui.res
+tenebrixd.exe: $(OBJS:obj\=obj\nogui\) obj\ui.res
     link /nologo /OUT:$@ $(LIBPATHS) $** $(LIBS)
 
 clean:
@@ -150,4 +150,4 @@ clean:
     -del /Q obj\nogui\*
     -del /Q *.ilk
     -del /Q *.pdb
-    -del /Q litecoind.exe
+    -del /Q tenebrixd.exe

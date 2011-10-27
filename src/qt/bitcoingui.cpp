@@ -2,6 +2,7 @@
  * Qt4 bitcoin GUI.
  *
  * W.J. van der Laan 2011
+ *Thank Coblee, Matoking and other Litecoin contributors for all the work and mining tab specifically - Lolcust
  */
 #include "bitcoingui.h"
 #include "transactiontablemodel.h"
@@ -57,7 +58,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     notificator(0)
 {
     resize(850, 550);
-    setWindowTitle(tr("Litecoin Wallet"));
+    setWindowTitle(tr("Tenebrix Wallet"));
     setWindowIcon(QIcon(":icons/bitcoin"));
     // Accept D&D of URIs
     setAcceptDrops(true);
@@ -200,7 +201,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(receiveCoinsAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
-    sendCoinsAction->setToolTip(tr("Send coins to a litecoin address"));
+    sendCoinsAction->setToolTip(tr("Send coins to a Tenebrix address"));
     sendCoinsAction->setCheckable(true);
     tabGroup->addAction(sendCoinsAction);
 
@@ -214,11 +215,11 @@ void BitcoinGUI::createActions()
     quitAction = new QAction(QIcon(":/icons/quit"), tr("&Exit"), this);
     quitAction->setToolTip(tr("Quit application"));
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About"), this);
-    aboutAction->setToolTip(tr("Show information about Litecoin"));
+    aboutAction->setToolTip(tr("Show information about Tenebrix"));
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setToolTip(tr("Modify configuration options for Litecoin"));
-    openBitcoinAction = new QAction(QIcon(":/icons/bitcoin"), tr("Open &Litecoin"), this);
-    openBitcoinAction->setToolTip(tr("Show the Litecoin window"));
+    optionsAction->setToolTip(tr("Modify configuration options for Tenebrix"));
+    openBitcoinAction = new QAction(QIcon(":/icons/bitcoin"), tr("Open &Tenebrix"), this);
+    openBitcoinAction->setToolTip(tr("Show the Tenebrix window"));
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the current view to a file"));
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet"), this);
@@ -302,20 +303,20 @@ void BitcoinGUI::createTrayIcon()
 
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip("Litecoin client");
+    trayIcon->setToolTip("Tenebrix client");
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
     trayIcon->show();
 
-    notificator = new Notificator(tr("litecoin-qt"), trayIcon);
+    notificator = new Notificator(tr("tenebrix-qt"), trayIcon);
 }
 
 void BitcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
-        // Click on system tray icon triggers "open litecoin"
+        // Click on system tray icon triggers "open tenebrix"
         openBitcoinAction->trigger();
     }
 
@@ -347,7 +348,7 @@ void BitcoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Litecoin network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to Tenebrix network", "", count));
 }
 
 void BitcoinGUI::setNumBlocks(int count)
@@ -422,12 +423,12 @@ void BitcoinGUI::setMining(bool mining, int hashrate)
     if (mining)
     {
         labelMiningIcon->setPixmap(QIcon(":/icons/mining_active").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelMiningIcon->setToolTip(tr("Mining litecoins at %1 hashes per second").arg(hashrate));
+        labelMiningIcon->setToolTip(tr("Mining TBX at %1 hashes per second").arg(hashrate));
     }
     else
     {
         labelMiningIcon->setPixmap(QIcon(":/icons/mining_inactive").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelMiningIcon->setToolTip(tr("Not mining litecoins"));
+        labelMiningIcon->setToolTip(tr("Not mining TBX"));
     }
 }
 

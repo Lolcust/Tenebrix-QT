@@ -1,11 +1,16 @@
-Litecoin - a lite version of Bitcoin optimized for CPU mining using scrypt as a proof of work scheme.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
-The rest is the same as bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+Tenebrix - a bitcoin fork with a solid stance against GPUs and in favor of transaction anonymity 
+ - alternative "quasi-deflationary" measures (to be done)
+ 
+ - no miner subsidy cut (to offset above)
+ 
+ - Strong Transaction Decorrelator service based on a buffer made from 
+ sequestered (permanently isolated from market) premined coins to increase
+ transaction anonymity and allow for almost  "cash-equivalent" privacy 
+(to be done)
 
+ - 25 TBX subsidy every 5 minutes
+ 
+ 
 Development process
 ===================
 
@@ -13,7 +18,7 @@ Developers work in their own trees, then submit pull requests when
 they think their feature or bug fix is ready.
 
 If it is a simple/trivial/non-controversial change, then one of the
-litecoin development team members simply pulls it.
+Tenebrix development team members simply pulls it.
 
 The patch will be accepted if there is broad consensus that it is a
 good thing.  Developers should expect to rework and resubmit patches
@@ -22,8 +27,8 @@ or are controversial.
 
 The master branch is regularly built and tested, but is not guaranteed
 to be completely stable. Tags are regularly created to indicate new
-official, stable release versions of Litecoin. If you would like to
-help test the Bitcoin core, please contact one of the OPs at #litecoin on irc.freenode.net.
+official, stable release versions of Tenebrix. If you would like to
+help test the Bitcoin core, please contact one of the OPs at #Tenebrix on irc.freenode.net.
 
 Feature branches are created when there are major new features being
 worked on by several people.

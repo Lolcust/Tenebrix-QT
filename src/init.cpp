@@ -53,7 +53,7 @@ void Shutdown(void* parg)
         delete pwalletMain;
         CreateThread(ExitTimeout, NULL);
         Sleep(50);
-        printf("Litecoin exiting\n\n");
+        printf("tenebrix exiting\n\n");
         fExit = true;
         exit(0);
     }
@@ -160,15 +160,15 @@ bool AppInit2(int argc, char* argv[])
     if (mapArgs.count("-?") || mapArgs.count("--help"))
     {
         string strUsage = string() +
-          _("Litecoin version") + " " + FormatFullVersion() + "\n\n" +
+          _("tenebrix version") + " " + FormatFullVersion() + "\n\n" +
           _("Usage:") + "\t\t\t\t\t\t\t\t\t\t\n" +
-            "  litecoin [options]                   \t  " + "\n" +
-            "  litecoin [options] <command> [params]\t  " + _("Send command to -server or litecoind\n") +
-            "  litecoin [options] help              \t\t  " + _("List commands\n") +
-            "  litecoin [options] help <command>    \t\t  " + _("Get help for a command\n") +
+            "  tenebrix [options]                   \t  " + "\n" +
+            "  tenebrix [options] <command> [params]\t  " + _("Send command to -server or tenebrixd\n") +
+            "  tenebrix [options] help              \t\t  " + _("List commands\n") +
+            "  tenebrix [options] help <command>    \t\t  " + _("Get help for a command\n") +
           _("Options:\n") +
-            "  -conf=<file>     \t\t  " + _("Specify configuration file (default: litecoin.conf)\n") +
-            "  -pid=<file>      \t\t  " + _("Specify pid file (default: litecoin.pid)\n") +
+            "  -conf=<file>     \t\t  " + _("Specify configuration file (default: tenebrix.conf)\n") +
+            "  -pid=<file>      \t\t  " + _("Specify pid file (default: tenebrix.pid)\n") +
             "  -gen             \t\t  " + _("Generate coins\n") +
             "  -gen=0           \t\t  " + _("Don't generate coins\n") +
             "  -min             \t\t  " + _("Start minimized\n") +
@@ -206,7 +206,7 @@ bool AppInit2(int argc, char* argv[])
 
 #ifdef USE_SSL
         strUsage += string() +
-            _("\nSSL options: (see the Litecoin Wiki for SSL setup instructions)\n") +
+            _("\nSSL options: (see the tenebrix Wiki for SSL setup instructions)\n") +
             "  -rpcssl                                \t  " + _("Use OpenSSL (https) for JSON-RPC connections\n") +
             "  -rpcsslcertificatechainfile=<file.cert>\t  " + _("Server certificate file (default: server.cert)\n") +
             "  -rpcsslprivatekeyfile=<file.pem>       \t  " + _("Server private key (default: server.pem)\n") +
@@ -285,7 +285,7 @@ bool AppInit2(int argc, char* argv[])
     if (!fDebug && !pszSetDataDir[0])
         ShrinkDebugFile();
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("Litecoin version %s\n", FormatFullVersion().c_str());
+    printf("tenebrix version %s\n", FormatFullVersion().c_str());
     printf("Default data directory %s\n", GetDefaultDataDir().c_str());
 
     if (GetBoolArg("-loadblockindextest"))
@@ -296,14 +296,14 @@ bool AppInit2(int argc, char* argv[])
         return false;
     }
 
-    // Make sure only a single litecoin process is using the data directory.
+    // Make sure only a single tenebrix process is using the data directory.
     string strLockFile = GetDataDir() + "/.lock";
     FILE* file = fopen(strLockFile.c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
     static boost::interprocess::file_lock lock(strLockFile.c_str());
     if (!lock.try_lock())
     {
-        wxMessageBox(strprintf(_("Cannot obtain a lock on data directory %s.  Litecoin is probably already running."), GetDataDir().c_str()), "Litecoin");
+        wxMessageBox(strprintf(_("Cannot obtain a lock on data directory %s.  tenebrix is probably already running."), GetDataDir().c_str()), "tenebrix");
         return false;
     }
 
@@ -313,7 +313,7 @@ bool AppInit2(int argc, char* argv[])
     {
         if (!BindListenPort(strErrors))
         {
-            wxMessageBox(strErrors, "Litecoin");
+            wxMessageBox(strErrors, "tenebrix");
             return false;
         }
     }
@@ -322,7 +322,7 @@ bool AppInit2(int argc, char* argv[])
     // Load data files
     //
     if (fDaemon)
-        fprintf(stdout, "litecoin server starting\n");
+        fprintf(stdout, "tenebrix server starting\n");
     strErrors = "";
     int64 nStart;
 
@@ -351,7 +351,7 @@ bool AppInit2(int argc, char* argv[])
         if (nLoadWalletRet == DB_CORRUPT)
             strErrors += _("Error loading wallet.dat: Wallet corrupted      \n");
         else if (nLoadWalletRet == DB_TOO_NEW)
-            strErrors += _("Error loading wallet.dat: Wallet requires newer version of Litecoin      \n");
+            strErrors += _("Error loading wallet.dat: Wallet requires newer version of tenebrix      \n");
         else
             strErrors += _("Error loading wallet.dat      \n");
     }
@@ -390,7 +390,7 @@ bool AppInit2(int argc, char* argv[])
 
     if (!strErrors.empty())
     {
-        wxMessageBox(strErrors, "Litecoin", wxOK | wxICON_ERROR);
+        wxMessageBox(strErrors, "tenebrix", wxOK | wxICON_ERROR);
         return false;
     }
 
@@ -436,7 +436,7 @@ bool AppInit2(int argc, char* argv[])
         return false;
     }
 
-    // Litecoin: Only force generate if -gen is set.
+    // tenebrix: Only force generate if -gen is set.
     if (mapArgs.count("-gen"))
     {
         fGenerateBitcoins = GetBoolArg("-gen");
@@ -449,7 +449,7 @@ bool AppInit2(int argc, char* argv[])
         addrProxy = CAddress(mapArgs["-proxy"]);
         if (!addrProxy.IsValid())
         {
-            wxMessageBox(_("Invalid -proxy address"), "Litecoin");
+            wxMessageBox(_("Invalid -proxy address"), "tenebrix");
             return false;
         }
     }
@@ -474,11 +474,11 @@ bool AppInit2(int argc, char* argv[])
     {
         if (!ParseMoney(mapArgs["-paytxfee"], nTransactionFee))
         {
-            wxMessageBox(_("Invalid amount for -paytxfee=<amount>"), "Litecoin");
+            wxMessageBox(_("Invalid amount for -paytxfee=<amount>"), "tenebrix");
             return false;
         }
         if (nTransactionFee > 0.25 * COIN)
-            wxMessageBox(_("Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction."), "Litecoin", wxOK | wxICON_EXCLAMATION);
+            wxMessageBox(_("Warning: -paytxfee is set very high.  This is the transaction fee you will pay if you send a transaction."), "tenebrix", wxOK | wxICON_EXCLAMATION);
     }
 
     if (fHaveUPnP)
@@ -501,7 +501,7 @@ bool AppInit2(int argc, char* argv[])
     RandAddSeedPerfmon();
 
     if (!CreateThread(StartNode, NULL))
-        wxMessageBox(_("Error: CreateThread(StartNode) failed"), "Litecoin");
+        wxMessageBox(_("Error: CreateThread(StartNode) failed"), "tenebrix");
 
     if (fServer)
         CreateThread(ThreadRPCServer, NULL);

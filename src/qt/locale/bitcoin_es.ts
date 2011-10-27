@@ -6,18 +6,18 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Litecoin</source>
-        <translation>Sobre Litecoin</translation>
+        <source>About tenebrix</source>
+        <translation>Sobre tenebrix</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Litecoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Litecoin&lt;/b&gt; - versión </translation>
+        <source>&lt;b&gt;tenebrix&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;tenebrix&lt;/b&gt; - versión </translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="85"/>
         <source>Copyright © 2009-2011 Bitcoin Developers
-Copyright © 2011 Litecoin Developers
+Copyright © 2011 tenebrix Developers
 
 This is experimental software.
 
@@ -25,7 +25,7 @@ Distributed under the MIT/X11 software license, see the accompanying file licens
 
 This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
         <translation>Copyright (c) 2009-2010 Bitcoin Developers
-Copyright © 2011 Litecoin Developers
+Copyright © 2011 tenebrix Developers
 
 Este es un software experimental.
 
@@ -46,8 +46,8 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="20"/>
-        <source>These are your Litecoin addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Estas son tus direcciones Litecoin para recibir pagos. Puedes utilizar una diferente por cada persona emisora para saber quien te está pagando.</translation>
+        <source>These are your tenebrix addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Estas son tus direcciones tenebrix para recibir pagos. Puedes utilizar una diferente por cada persona emisora para saber quien te está pagando.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="33"/>
@@ -210,8 +210,8 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../askpassphrasedialog.cpp" line="102"/>
-        <source>Remember that encrypting your wallet cannot fully protect your litecoins from being stolen by malware infecting your computer.</source>
-        <translation>Recuerda que encriptando tu cartera no garantiza mantener a salvo tus litecoins en caso de tener viruses en el ordenador.</translation>
+        <source>Remember that encrypting your wallet cannot fully protect your tenebrixs from being stolen by malware infecting your computer.</source>
+        <translation>Recuerda que encriptando tu cartera no garantiza mantener a salvo tus tenebrixs en caso de tener viruses en el ordenador.</translation>
     </message>
     <message>
         <location filename="../askpassphrasedialog.cpp" line="106"/>
@@ -259,8 +259,8 @@ Are you sure you wish to encrypt your wallet?</source>
     <name>BitcoinGUI</name>
     <message>
         <location filename="../bitcoingui.cpp" line="59"/>
-        <source>Litecoin Wallet</source>
-        <translation>Cartera Litecoin</translation>
+        <source>tenebrix Wallet</source>
+        <translation>Cartera tenebrix</translation>
     </message>
     <message>
         <source>Number of connections to other clients</source>
@@ -352,8 +352,8 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="190"/>
-        <source>Send coins to a litecoin address</source>
-        <translation>Envia monedas a una dirección litecoin</translation>
+        <source>Send coins to a tenebrix address</source>
+        <translation>Envia monedas a una dirección tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="200"/>
@@ -372,8 +372,8 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="203"/>
-        <source>Show information about Litecoin</source>
-        <translation>Muestra información sobre Litecoin</translation>
+        <source>Show information about tenebrix</source>
+        <translation>Muestra información sobre tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="204"/>
@@ -382,18 +382,18 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="205"/>
-        <source>Modify configuration options for litecoin</source>
+        <source>Modify configuration options for tenebrix</source>
         <translation>Modifica opciones de configuración</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="206"/>
-        <source>Open &amp;Litecoin</source>
-        <translation>Abre &amp;Litecoin</translation>
+        <source>Open &amp;tenebrix</source>
+        <translation>Abre &amp;tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="207"/>
-        <source>Show the Litecoin window</source>
-        <translation>Muestra la ventana de Litecoin</translation>
+        <source>Show the tenebrix window</source>
+        <translation>Muestra la ventana de tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="208"/>
@@ -432,14 +432,14 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="293"/>
-        <source>litecoin-qt</source>
-        <translation>litecoin-qt</translation>
+        <source>tenebrix-qt</source>
+        <translation>tenebrix-qt</translation>
     </message>
     <message numerus="yes">
         <location filename="../bitcoingui.cpp" line="332"/>
-        <source>%n active connection(s) to Litecoin network</source>
+        <source>%n active connection(s) to tenebrix network</source>
         <translation>
-            <numerusform>%n conexion(es) activas hacia la red Litecoin</numerusform>
+            <numerusform>%n conexion(es) activas hacia la red tenebrix</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -527,8 +527,8 @@ Dirección: %4</translation>
         <translation type="obsolete">Export data in current view to a file</translation>
     </message>
     <message>
-        <source>Litecoin Wallet [testnet]</source>
-        <translation type="obsolete">Litecoin Wallet [testnet]</translation>
+        <source>tenebrix Wallet [testnet]</source>
+        <translation type="obsolete">tenebrix Wallet [testnet]</translation>
     </message>
     <message numerus="yes">
         <source>%n connection(s)</source>
@@ -648,8 +648,8 @@ Dirección: %4</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="92"/>
-        <source>The entered address &quot;%1&quot; is not a valid litecoin address.</source>
-        <translation>La dirección introducida &quot;%1&quot; no es una dirección Litecoin valida.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid tenebrix address.</source>
+        <translation>La dirección introducida &quot;%1&quot; no es una dirección tenebrix valida.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="97"/>
@@ -671,13 +671,13 @@ Dirección: %4</translation>
     <name>MainOptionsPage</name>
     <message>
         <location filename="../optionsdialog.cpp" line="166"/>
-        <source>&amp;Start Litecoin on window system startup</source>
-        <translation>&amp;Arranca Litecoin al iniciar el sistema</translation>
+        <source>&amp;Start tenebrix on window system startup</source>
+        <translation>&amp;Arranca tenebrix al iniciar el sistema</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="167"/>
-        <source>Automatically start Litecoin after the computer is turned on</source>
-        <translation>Arranca Litecoin cuando se encienda el ordenador</translation>
+        <source>Automatically start tenebrix after the computer is turned on</source>
+        <translation>Arranca tenebrix cuando se encienda el ordenador</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="170"/>
@@ -696,7 +696,7 @@ Dirección: %4</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="175"/>
-        <source>Automatically open the Litecoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the tenebrix client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Intenta abrir el puerto adecuado en el router automaticamente. Esta opcion solo funciona si el router soporta UPnP y esta activado.</translation>
     </message>
     <message>
@@ -716,8 +716,8 @@ Dirección: %4</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="183"/>
-        <source>Connect to the Litecoin network through a SOCKS4 proxy (e.g. when connecting through Tor)</source>
-        <translation>Conecta a la red Litecoin atraves de un proxy SOCKS4 (ej. para conectar con la red Tor)</translation>
+        <source>Connect to the tenebrix network through a SOCKS4 proxy (e.g. when connecting through Tor)</source>
+        <translation>Conecta a la red tenebrix atraves de un proxy SOCKS4 (ej. para conectar con la red Tor)</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="188"/>
@@ -887,8 +887,8 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Pay &amp;To:</translation>
     </message>
     <message>
-        <source>Enter a Litecoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation type="obsolete">Enter a Litecoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a tenebrix address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation type="obsolete">Enter a tenebrix address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to your address book</source>
@@ -1061,8 +1061,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="21"/>
-        <source>Enter a Litecoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduce una dirección Litecoin (ej. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a tenebrix address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <translation>Introduce una dirección tenebrix (ej. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
     </message>
 </context>
 <context>
@@ -1519,11 +1519,11 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>litecoin-core</name>
+    <name>tenebrix-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="3"/>
-        <source>Litecoin version</source>
-        <translation>Versión Litecoin</translation>
+        <source>tenebrix version</source>
+        <translation>Versión tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="4"/>
@@ -1532,9 +1532,9 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="5"/>
-        <source>Send command to -server or litecoind
+        <source>Send command to -server or tenebrixd
 </source>
-        <translation>Envia comando a litecoin lanzado con -server u litecoind
+        <translation>Envia comando a tenebrix lanzado con -server u tenebrixd
 </translation>
     </message>
     <message>
@@ -1560,16 +1560,16 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="9"/>
-        <source>Specify configuration file (default: litecoin.conf)
+        <source>Specify configuration file (default: tenebrix.conf)
 </source>
-        <translation>Especifica archivo de configuración (predeterminado: litecoin.conf)
+        <translation>Especifica archivo de configuración (predeterminado: tenebrix.conf)
 </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="10"/>
-        <source>Specify pid file (default: litecoind.pid)
+        <source>Specify pid file (default: tenebrixd.pid)
 </source>
-        <translation>Especifica archivo pid (predeterminado: litecoin.pid)
+        <translation>Especifica archivo pid (predeterminado: tenebrix.pid)
 </translation>
     </message>
     <message>
@@ -1736,9 +1736,9 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../bitcoinstrings.cpp" line="34"/>
         <source>
-SSL options: (see the Litecoin Wiki for SSL setup instructions)
+SSL options: (see the tenebrix Wiki for SSL setup instructions)
 </source>
-        <translation>Opciones SSL: (ver la Litecoin Wiki para instrucciones de configuración SSL)
+        <translation>Opciones SSL: (ver la tenebrix Wiki para instrucciones de configuración SSL)
 </translation>
     </message>
     <message>
@@ -1778,8 +1778,8 @@ SSL options: (see the Litecoin Wiki for SSL setup instructions)
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="44"/>
-        <source>Cannot obtain a lock on data directory %s.  Litecoin is probably already running.</source>
-        <translation>No se puede obtener permiso de trabajo en la carpeta de datos %s. Probablemente Litecoin ya se está ejecutando.
+        <source>Cannot obtain a lock on data directory %s.  tenebrix is probably already running.</source>
+        <translation>No se puede obtener permiso de trabajo en la carpeta de datos %s. Probablemente tenebrix ya se está ejecutando.
 </translation>
     </message>
     <message>
@@ -1820,9 +1820,9 @@ SSL options: (see the Litecoin Wiki for SSL setup instructions)
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="53"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Litecoin
+        <source>Error loading wallet.dat: Wallet requires newer version of tenebrix
 </source>
-        <translation>Error cargando el archivo wallet.dat: Se necesita una versión mas nueva de Litecoin
+        <translation>Error cargando el archivo wallet.dat: Se necesita una versión mas nueva de tenebrix
 </translation>
     </message>
     <message>
@@ -2039,9 +2039,9 @@ Are you sure you wish to encrypt your wallet?</source>
     <message>
         <location filename="../bitcoinstrings.cpp" line="112"/>
         <source>Wallet Encrypted.
-Remember that encrypting your wallet cannot fully protect your litecoins from being stolen by malware infecting your computer.</source>
+Remember that encrypting your wallet cannot fully protect your tenebrixs from being stolen by malware infecting your computer.</source>
         <translation>Cartera Encriptada.
-Recuerda que encriptando tu cartera no garantiza mantener a salvo tus litecoins en caso de tener viruses en el ordenador.</translation>
+Recuerda que encriptando tu cartera no garantiza mantener a salvo tus tenebrixs en caso de tener viruses en el ordenador.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="116"/>
@@ -2179,8 +2179,8 @@ Etiqueta</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="150"/>
-        <source>Cannot write autostart/litecoin.desktop file</source>
-        <translation>No se puede escribir el fichero autostart/litecoin.desktop</translation>
+        <source>Cannot write autostart/tenebrix.desktop file</source>
+        <translation>No se puede escribir el fichero autostart/tenebrix.desktop</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="151"/>
@@ -2189,8 +2189,8 @@ Etiqueta</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="152"/>
-        <source>&amp;Start Litecoin on window system startup</source>
-        <translation>&amp;Arranca Litecoin al iniciar el sistema</translation>
+        <source>&amp;Start tenebrix on window system startup</source>
+        <translation>&amp;Arranca tenebrix al iniciar el sistema</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="153"/>
@@ -2373,8 +2373,8 @@ pero la información de los comentarios quedará en blanco.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="198"/>
-        <source>Litecoin Address</source>
-        <translation>Dirección Litecoin</translation>
+        <source>tenebrix Address</source>
+        <translation>Dirección tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="199"/>
@@ -2398,28 +2398,28 @@ pero la información de los comentarios quedará en blanco.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="205"/>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>tenebrix</source>
+        <translation>tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="206"/>
-        <source>Litecoin - Generating</source>
-        <translation>Litecoin - Generando</translation>
+        <source>tenebrix - Generating</source>
+        <translation>tenebrix - Generando</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="207"/>
-        <source>Litecoin - (not connected)</source>
-        <translation>Litecoin - (no conectado)</translation>
+        <source>tenebrix - (not connected)</source>
+        <translation>tenebrix - (no conectado)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="208"/>
-        <source>&amp;Open Litecoin</source>
-        <translation>&amp;Abre Litecoin</translation>
+        <source>&amp;Open tenebrix</source>
+        <translation>&amp;Abre tenebrix</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="209"/>
-        <source>&amp;Send Litecoins</source>
-        <translation>&amp;Envia Litecoins</translation>
+        <source>&amp;Send tenebrixs</source>
+        <translation>&amp;Envia tenebrixs</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="210"/>
@@ -2468,13 +2468,13 @@ pero la información de los comentarios quedará en blanco.</translation>
         <translation>Fondos insuficientes</translation>
     </message>
     <message>
-        <source>Invalid litecoin address</source>
-        <translation type="obsolete">Invalid litecoin address</translation>
+        <source>Invalid tenebrix address</source>
+        <translation type="obsolete">Invalid tenebrix address</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="65"/>
-        <source>Unable to bind to port %d on this computer.  Litecoin is probably already running.</source>
-        <translation>No es posible escuchar en el puerto %d en este ordenador. Probablemente Litecoin ya se está ejecutando.</translation>
+        <source>Unable to bind to port %d on this computer.  tenebrix is probably already running.</source>
+        <translation>No es posible escuchar en el puerto %d en este ordenador. Probablemente tenebrix ya se está ejecutando.</translation>
     </message>
     <message>
         <source>To use the %s option</source>
@@ -2499,8 +2499,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="213"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Litecoin will not work properly.</source>
-        <translation>Precaución: Por favor revisa que la fecha y hora de tu ordenador son correctas. Si tu reloj está mal Litecoin no funcionará correctamente.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong tenebrix will not work properly.</source>
+        <translation>Precaución: Por favor revisa que la fecha y hora de tu ordenador son correctas. Si tu reloj está mal tenebrix no funcionará correctamente.</translation>
     </message>
     <message>
         <source>-beta</source>

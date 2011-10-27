@@ -74,7 +74,7 @@ OBJS= \
     obj/wallet.o
 
 
-all: litecoind.exe
+all: tenebrixd.exe
 
 obj/nogui/scrypt.o: scrypt.c
 	gcc -c -o $@ $^
@@ -82,7 +82,7 @@ obj/nogui/scrypt.o: scrypt.c
 obj/nogui/%.o: %.cpp $(HEADERS)
 	g++ -c $(CFLAGS) -o $@ $<
 
-litecoind.exe: $(OBJS:obj/%=obj/nogui/%)
+tenebrixd.exe: $(OBJS:obj/%=obj/nogui/%)
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 obj/test/test_bitcoin.o: $(wildcard test/*.cpp) $(HEADERS)
@@ -92,7 +92,7 @@ test_bitcoin.exe: obj/test/test_bitcoin.o $(filter-out obj/nogui/init.o,$(OBJS:o
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-del /Q litecoind test_bitcoin
+	-del /Q tenebrixd test_bitcoin
 	-del /Q obj\*
 	-del /Q obj\nogui\*
 	-del /Q obj\test\*

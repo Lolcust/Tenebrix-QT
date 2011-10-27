@@ -445,7 +445,7 @@ inline int64 GetArg(const std::string& strArg, int64 nDefault)
     return nDefault;
 }
 
-inline bool GetBoolArg(const std::string& strArg)
+inline bool GetBoolArg(const std::string& strArg, bool bDefault)
 {
     if (mapArgs.count(strArg))
     {
@@ -453,17 +453,13 @@ inline bool GetBoolArg(const std::string& strArg)
             return true;
         return (atoi(mapArgs[strArg]) != 0);
     }
-    return false;
+    return bDefault;
 }
 
-
-
-
-
-
-
-
-
+inline bool GetBoolArg(const std::string& strArg)
+{
+    return GetBoolArg(strArg, false);
+}
 
 inline void heapchk()
 {

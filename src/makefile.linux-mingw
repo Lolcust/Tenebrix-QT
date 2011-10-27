@@ -76,7 +76,7 @@ OBJS= \
     obj/util.o \
     obj/wallet.o
 
-all: litecoind.exe
+all: tenebrixd.exe
 
 obj/nogui/scrypt.o: scrypt.c
 	gcc -c -o $@ $^
@@ -84,7 +84,7 @@ obj/nogui/scrypt.o: scrypt.c
 obj/nogui/%.o: %.cpp $(HEADERS)
 	i586-mingw32msvc-g++ -c $(CFLAGS) -o $@ $<
 
-litecoind.exe: $(OBJS:obj/%=obj/nogui/%)
+tenebrixd.exe: $(OBJS:obj/%=obj/nogui/%)
 	i586-mingw32msvc-g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 
@@ -101,5 +101,5 @@ clean:
 	-rm -f obj/test/*.o
 	-rm -f test/*.o
 	-rm -f headers.h.gch
-	-rm -f litecoind.exe
+	-rm -f tenebrixd.exe
 	-rm -f test_bitcoin.exe
