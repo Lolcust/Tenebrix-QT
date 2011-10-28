@@ -1,4 +1,5 @@
 Tenebrix - a bitcoin fork with a solid stance against GPUs and in favor of transaction anonymity 
+
  - alternative "quasi-deflationary" measures (to be done)
  
  - no miner subsidy cut (to offset above)
