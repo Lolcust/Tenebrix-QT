@@ -30,7 +30,8 @@ string strMiscWarning;
 bool fTestNet = false;
 bool fNoListen = false;
 bool fLogTimestamps = false;
-
+int nTimeNTPOffset = 0;
+bool fNTPSynced = false;
 
 
 
@@ -927,8 +928,11 @@ static int64 nTimeOffset = 0;
 
 int64 GetAdjustedTime()
 {
+    if (fNTPSynced)
+        return GetTime() + nTimeNTPOffset;
     return GetTime() + nTimeOffset;
 }
+
 
 void AddTimeData(unsigned int ip, int64 nTime)
 {
@@ -970,10 +974,10 @@ void AddTimeData(unsigned int ip, int64 nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong Tenebrix will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct.  If your clock is wrong Bitcoin will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
-                    boost::thread(boost::bind(ThreadSafeMessageBox, strMessage+" ", string("Tenebrix"), wxOK | wxICON_EXCLAMATION, (wxWindow*)NULL, -1, -1));
+                    boost::thread(boost::bind(ThreadSafeMessageBox, strMessage+" ", string("Bitcoin"), wxOK | wxICON_EXCLAMATION, (wxWindow*)NULL, -1, -1));
                 }
             }
         }
@@ -981,8 +985,25 @@ void AddTimeData(unsigned int ip, int64 nTime)
             printf("%+"PRI64d"  ", n);
         printf("|  nTimeOffset = %+"PRI64d"  (%+"PRI64d" minutes)\n", nTimeOffset, nTimeOffset/60);
     }
-}
+    if (fNTPSynced && vTimeOffsets.size() >= 7)
+    {
+        sort(vTimeOffsets.begin(), vTimeOffsets.end());
+        int64 nMedian = vTimeOffsets[vTimeOffsets.size()/2];
+        int ninagreement = 0;
+        BOOST_FOREACH(int64 nOffset, vTimeOffsets)
+            if (abs(nMedian - nOffset) <= 5)
+                ++ninagreement;
 
+        // The median of our peers is more than 10 seconds out from NTP time and the simple majority of peers are in +-5 sec of that, warn the user.
+        if ((abs(nMedian - nTimeNTPOffset) > 10) && (ninagreement >= vTimeOffsets.size()/2))
+        {
+            string strMessage = _("Warning: A majority of peers disagree with NTP time. Something is off here!");
+            strMiscWarning = strMessage;
+            printf("*** %s\n", strMessage.c_str());
+            boost::thread(boost::bind(ThreadSafeMessageBox, strMessage+" ", string("Bitcoin"), wxOK | wxICON_EXCLAMATION, (wxWindow*)NULL, -1, -1));
+        }
+    }
+}
 
 
 

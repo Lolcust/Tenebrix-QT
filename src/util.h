@@ -162,6 +162,8 @@ extern std::string strMiscWarning;
 extern bool fTestNet;
 extern bool fNoListen;
 extern bool fLogTimestamps;
+extern int nTimeNTPOffset;
+extern bool fNTPSynced;
 
 void RandAddSeed();
 void RandAddSeedPerfmon();

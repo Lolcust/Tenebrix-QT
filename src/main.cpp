@@ -642,10 +642,9 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
 {
     //int64 nSubsidy = 25* COIN;Tenebrix: the amazing mythogenic premine happens here
     int64 nSubsidy = 7769999 * COIN;
-	if(GetBoolArg("-enablepm", true))
+	if(nHeight>1)
     {
-        if (nHeight>1)
-            nSubsidy = 25 * COIN;
+        nSubsidy = 25 * COIN;
     }
     // Subsidy is cut in half every 4 years no more :)
     //nSubsidy >>= (nHeight / 210000);
@@ -1321,7 +1320,8 @@ bool CBlock::AcceptBlock()
     // Check that the block chain matches the known block chain up to a checkpoint
     if (!fTestNet)
         if ((nHeight == 100 && hash != uint256("0xaa6fbbc5b8885797a180c35918971e40d0459fd4299cbcaae7d3b5d551fa7d70")) ||
-            (nHeight == 152 && hash != uint256("0x7cf7e64cd5c770cf7315bc767e179a61d68815326c163a16b487639c006c9c70")))
+            (nHeight == 152 && hash != uint256("0x7cf7e64cd5c770cf7315bc767e179a61d68815326c163a16b487639c006c9c70")) ||
+            (nHeight == 16949 && hash != uint256("0xcaaa6bfff86dae9ecc2afc98c903a4052b2f432791787b1cd711e26fb980f407")))
             return error("AcceptBlock() : rejected by checkpoint lockin at %d", nHeight);
 
     printf("Got new block at height %d: %s\n", nHeight, hash.ToString().c_str());
