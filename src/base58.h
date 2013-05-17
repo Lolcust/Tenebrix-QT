@@ -244,7 +244,7 @@ class CBitcoinAddress : public CBase58Data
 public:
     bool SetHash160(const uint160& hash160)
     {
-        SetData(fTestNet ? 53 : 127, &hash160, 20); // Tenebrix addresses start with t
+        SetData(fTestNet ? 111 : 127, &hash160, 20); // Tenebrix addresses start with t
         return true;
     }
 
